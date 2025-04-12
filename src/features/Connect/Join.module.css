@@ -1,0 +1,9 @@
+.joinForm {
+  display: grid;
+  gap: .25rem;
+  grid-template-columns: 200px 200px;
+}
+
+.joinButton {
+  grid-column: 1 / -1;
+}
