@@ -1,0 +1,9 @@
+.contributionButtonsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.contributionButtonsWrapper button {
+  font-size: 1.5rem;
+}

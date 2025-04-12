@@ -1,0 +1,18 @@
+.title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.title img {
+  max-width: 70px;
+}
+
+header {
+  align-items: center;
+  padding-top: 1rem;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  will-change: transform;
+}

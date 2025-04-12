@@ -1,0 +1,10 @@
+.keeperControls {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  padding: 1rem;
+}
+
+.keeperControls button {
+  background-color: var(--color-magenta-2)
+}

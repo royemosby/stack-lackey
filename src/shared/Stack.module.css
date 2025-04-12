@@ -1,0 +1,9 @@
+.next {
+  font-style: italic;
+}
+
+.queue {
+  margin: auto;
+  padding: 0;
+  list-style: none;
+}
