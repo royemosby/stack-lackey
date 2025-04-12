@@ -1,5 +1,5 @@
 import Stage from '../shared/Stage';
-import StackContributionButtons from '../shared/StackContributionButtons';
+import ContributeButtons from '../shared/ContributeButtons';
 import Stack from '../shared/Stack';
 
 export default function Member() {
@@ -8,7 +8,7 @@ export default function Member() {
       <h2>Member</h2>
       <Stage />
       <Stack />
-      <StackContributionButtons />
+      <ContributeButtons />
     </>
   );
 }

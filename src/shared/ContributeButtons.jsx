@@ -1,6 +1,6 @@
-import styles from './StackContributionButtons.module.css';
+import styles from './ContributeButtons.module.css';
 
-export default function StackContributionButtons() {
+export default function ContributeButtons() {
   function handleClick(type) {
     console.log(type);
   }
