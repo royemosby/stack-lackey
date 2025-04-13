@@ -1,6 +1,6 @@
-import styles from './Join.module.css';
+import styles from './MemberForm.module.css';
 
-export default function Join() {
+export default function MemberForm() {
   return (
     <form className={styles.joinForm}>
       <label htmlFor="stackToken">Stack Token</label>
