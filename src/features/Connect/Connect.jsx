@@ -6,7 +6,7 @@ import KeeperForm from './KeeperForm';
 export default function Connect() {
   return (
     <Tabs.Root defaultValue="join">
-      <Tabs.List aria-label="Join to a Stack">
+      <Tabs.List aria-label="Join a Stack">
         <Tabs.Trigger value="join">Join as member</Tabs.Trigger>
         <Tabs.Trigger value="setup">Join as keeper</Tabs.Trigger>
       </Tabs.List>

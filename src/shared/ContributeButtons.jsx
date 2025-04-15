@@ -5,7 +5,7 @@ export default function ContributeButtons() {
     console.log(type);
   }
   return (
-    <div className={styles.contributionButtonsWrapper}>
+    <div className={styles.contributeButtonsWrapper}>
       <button onClick={() => handleClick('response')}>Stack</button>
       <button onClick={() => handleClick('clarify')}>Stack?</button>
       <button onClick={() => handleClick('direct response')}>Stack@</button>
