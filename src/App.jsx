@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useSyncedStore } from '@syncedstore/react';
 import logo from './assets/logos/shuffle.svg';
 import styles from './App.module.css';
 import Connect from './features/Connect/Connect';
 import Keeper from './features/Keeper';
 import Member from './features/Member';
+import { store } from './services/sync/store';
 
 const initialState = {
   //updated only by keeper client
@@ -53,17 +55,27 @@ const initialState = {
 
 function App() {
   const [clientType, setClientType] = useState('connect');
+  const syncedState = useSyncedStore(store);
 
   useEffect(() => {
     const persistedValue = localStorage.getItem('layout');
     if (persistedValue) {
       setClientType(persistedValue);
     }
+    console.dir(syncedState.world);
   }, []);
 
   function handleSetClientType(layout) {
     localStorage.setItem('layout', layout);
     setClientType(layout);
+  }
+
+  function handleTestUpdate(e) {
+    if (!syncedState.world[0]) {
+      syncedState.world.push({ message: e.target.value });
+    } else {
+      syncedState.world[0].message = e.target.value;
+    }
   }
 
   return (
@@ -75,6 +87,15 @@ function App() {
         </div>
       </header>
       <main>
+        <h2>{syncedState.world[0]?.message}</h2>
+        <label htmlFor="testing">
+          <input
+            type="text"
+            value={syncedState.world[0]?.message || ''}
+            onChange={handleTestUpdate}
+          />
+        </label>
+        <hr />
         {clientType === 'connect' && <Connect />}
         {clientType === 'member' && <Member />}{' '}
         {clientType === 'keeper' && <Keeper />}{' '}
