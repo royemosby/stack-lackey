@@ -1,10 +1,19 @@
 import { getYjsDoc, syncedStore } from '@syncedstore/core';
 import { WebrtcProvider } from 'y-webrtc';
 
-export const store = syncedStore({ world: [], moose: {} });
+const initialState = {
+  keeper: {},
+  queue: [],
+  members: [],
+  stage: {},
+  ui: {},
+  testString: [],
+};
+
+export const store = syncedStore(initialState);
 
 const doc = getYjsDoc(store);
-export const webrtcProvider = new WebrtcProvider('synced-world', doc, {
+export const webrtcProvider = new WebrtcProvider('stackProvider', doc, {
   signaling: ['ws://localhost:4444'],
 });
 
