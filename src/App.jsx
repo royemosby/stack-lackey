@@ -62,7 +62,7 @@ function App() {
     if (persistedValue) {
       setClientType(persistedValue);
     }
-    console.dir(syncedState.world);
+    console.dir(syncedState.testString);
   }, []);
 
   function handleSetClientType(layout) {
@@ -71,10 +71,10 @@ function App() {
   }
 
   function handleTestUpdate(e) {
-    if (!syncedState.world[0]) {
-      syncedState.world.push({ message: e.target.value });
+    if (!syncedState.testString[0]) {
+      syncedState.testString.push({ message: e.target.value });
     } else {
-      syncedState.world[0].message = e.target.value;
+      syncedState.testString[0].message = e.target.value;
     }
   }
 
@@ -87,11 +87,11 @@ function App() {
         </div>
       </header>
       <main>
-        <h2>{syncedState.world[0]?.message}</h2>
+        <h2>{syncedState.testString[0]?.message}</h2>
         <label htmlFor="testing">
           <input
             type="text"
-            value={syncedState.world[0]?.message || ''}
+            value={syncedState.testString[0]?.message || ''}
             onChange={handleTestUpdate}
           />
         </label>
