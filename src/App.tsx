@@ -24,7 +24,7 @@ function App() {
     setClientType(layout);
   }
 
-  function handleTestUpdate(e) {
+  function handleTestUpdate(e: Event) {
     if (!syncedState.testString[0]) {
       syncedState.testString.push({ message: e.target.value });
     } else {
