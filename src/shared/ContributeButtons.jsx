@@ -1,11 +1,11 @@
-import styles from './StackContributionButtons.module.css';
+import styles from './ContributeButtons.module.css';
 
-export default function StackContributionButtons() {
+export default function ContributeButtons() {
   function handleClick(type) {
     console.log(type);
   }
   return (
-    <div className={styles.contributionButtonsWrapper}>
+    <div className={styles.contributeButtonsWrapper}>
       <button onClick={() => handleClick('response')}>Stack</button>
       <button onClick={() => handleClick('clarify')}>Stack?</button>
       <button onClick={() => handleClick('direct response')}>Stack@</button>

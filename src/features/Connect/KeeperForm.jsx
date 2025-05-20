@@ -1,6 +1,6 @@
-import styles from './Setup.module.css';
+import styles from './KeeperForm.module.css';
 
-export default function Setup() {
+export default function KeeperForm() {
   return (
     <form className={styles.setupForm}>
       <label htmlFor="keeperSecret">Keeper Secret</label>
