@@ -36,6 +36,19 @@ export const connect = () => {
       console.log('WebRTC status:', event.connected);
       if (statusCallback) statusCallback(event.connected);
     });
+    // Listen for peer changes
+    webrtcProvider.on(
+      'peers',
+      (event: {
+        added: string[];
+        removed: string[];
+        webrtcPeers: string[];
+        bcPeers: string[];
+      }) => {
+        console.log('WebRTC peer events', event);
+        // You can update your app state here if needed
+      }
+    );
   } else {
     webrtcProvider.connect();
   }
