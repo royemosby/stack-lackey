@@ -30,8 +30,11 @@ header {
 .connected {
   background-color: var(--color-chartreuse-3);
   color: white;
+  font: bold;
 }
 
 .disconnected {
   background-color: var(--color-red-3);
+  color: white;
+  font-weight: bold;
 }
