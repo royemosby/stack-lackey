@@ -1,4 +1,5 @@
 import styles from './KeeperForm.module.css';
+import { connect } from '../../services/sync/store';
 
 export default function KeeperForm() {
   return (
@@ -7,7 +8,7 @@ export default function KeeperForm() {
       <input type="text" id="keeperSecret" />
       <label htmlFor="username">Display Name</label>
       <input type="text" id="username" />
-      <button disabled className={styles.setupButton} type="button">
+      <button onClick={connect} className={styles.setupButton} type="button">
         Start a Stack
       </button>
       <button disabled className={styles.setupButton} type="button">

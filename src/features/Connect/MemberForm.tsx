@@ -1,4 +1,5 @@
 import styles from './MemberForm.module.css';
+import { connect } from '../../services/sync/store';
 
 export default function MemberForm() {
   return (
@@ -9,7 +10,7 @@ export default function MemberForm() {
       <input type="text" id="stackToken" />
       <label htmlFor="username">Display Name</label>
       <input type="text" id="username" />
-      <button disabled className={styles.joinButton} type="button">
+      <button onClick={connect} className={styles.joinButton} type="button">
         Join the Stack
       </button>
     </form>
