@@ -1,11 +1,20 @@
 .title {
   display: flex;
   align-items: center;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .title img {
   max-width: 70px;
+}
+
+.title h1 {
+  margin: auto 1rem;
+}
+
+.title span {
+  padding: .5rem;
+  border-radius: .25rem;
 }
 
 header {
@@ -15,4 +24,14 @@ header {
   position: sticky;
   top: 0;
   will-change: transform;
+}
+
+
+.connected {
+  background-color: var(--color-chartreuse-3);
+  color: white;
+}
+
+.disconnected {
+  background-color: var(--color-red-3);
 }

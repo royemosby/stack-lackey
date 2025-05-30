@@ -5,13 +5,19 @@ import styles from './App.module.css';
 import Connect from './features/Connect/Connect';
 import Keeper from './features/Keeper';
 import Member from './features/Member';
-import { store } from './services/sync/store';
+import { store, setStatusCallback } from './services/sync/store';
 
 type ClientType = 'connect' | 'member' | 'keeper';
 
 function App() {
   const [clientType, setClientType] = useState('connect');
   const syncedState = useSyncedStore(store);
+  const [connectionStatus, setConnectionStatus] = useState(false);
+
+  useEffect(() => {
+    setStatusCallback(setConnectionStatus);
+    return () => setStatusCallback(null);
+  }, []);
 
   useEffect(() => {
     const persistedValue = localStorage.getItem('layout');
@@ -36,6 +42,11 @@ function App() {
         <div className={styles.title}>
           <img src={logo} alt="logo" />
           <h1>Stack Lackey</h1>
+          {connectionStatus ? (
+            <span className={styles.connected}>Connected</span>
+          ) : (
+            <span className={styles.disconnected}>Disconnected</span>
+          )}
         </div>
       </header>
       <main>
