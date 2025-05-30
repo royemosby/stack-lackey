@@ -7,6 +7,8 @@ import Keeper from './features/Keeper';
 import Member from './features/Member';
 import { store } from './services/sync/store';
 
+type ClientType = 'connect' | 'member' | 'keeper';
+
 function App() {
   const [clientType, setClientType] = useState('connect');
   const syncedState = useSyncedStore(store);
@@ -16,20 +18,16 @@ function App() {
     if (persistedValue) {
       setClientType(persistedValue);
     }
-    console.dir(syncedState.testString);
+    console.dir(syncedState.testData.message ?? 'test data is empty');
   }, [syncedState]);
 
-  function handleSetClientType(layout) {
+  function handleSetClientType(layout: ClientType) {
     localStorage.setItem('layout', layout);
     setClientType(layout);
   }
 
-  function handleTestUpdate(e) {
-    if (!syncedState.testString[0]) {
-      syncedState.testString.push({ message: e.target.value });
-    } else {
-      syncedState.testString[0].message = e.target.value;
-    }
+  function handleTestUpdate(e: React.ChangeEvent<HTMLInputElement>) {
+    syncedState.testData.message = e.target.value;
   }
 
   return (
@@ -41,11 +39,11 @@ function App() {
         </div>
       </header>
       <main>
-        <h2>{syncedState.testString[0]?.message}</h2>
+        <h2>{syncedState.testData?.message}</h2>
         <label htmlFor="testing">
           <input
             type="text"
-            value={syncedState.testString[0]?.message || ''}
+            value={syncedState.testData?.message ?? ''}
             onChange={handleTestUpdate}
           />
         </label>
@@ -55,9 +53,15 @@ function App() {
         {clientType === 'keeper' && <Keeper />}{' '}
       </main>
       <div className="adminControls">
-        <button onClick={() => handleSetClientType('connect')}>Connect</button>
-        <button onClick={() => handleSetClientType('member')}>Member</button>
-        <button onClick={() => handleSetClientType('keeper')}>Keeper</button>
+        <button type="button" onClick={() => handleSetClientType('connect')}>
+          Connect
+        </button>
+        <button type="button" onClick={() => handleSetClientType('member')}>
+          Member
+        </button>
+        <button type="button" onClick={() => handleSetClientType('keeper')}>
+          Keeper
+        </button>
       </div>
     </>
   );
