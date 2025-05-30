@@ -18,10 +18,23 @@ const doc: Synced.SyncedDoc = getYjsDoc(store);
 
 export let webrtcProvider: WebrtcProvider | null = null;
 
+let statusCallback: ((connected: boolean) => void) | null = null;
+
+export function setStatusCallback(cb: ((connected: boolean) => void) | null) {
+  statusCallback = cb;
+}
+
 export const connect = () => {
   if (!webrtcProvider) {
     webrtcProvider = new WebrtcProvider('stackProvider', doc, {
       signaling: ['ws://localhost:4444'],
+    });
+
+    // Listen for connection status changes
+    webrtcProvider.on('status', (event: { connected: boolean }) => {
+      // status is 'connected' or 'disconnected'
+      console.log('WebRTC status:', event.connected);
+      if (statusCallback) statusCallback(event.connected);
     });
   } else {
     webrtcProvider.connect();
