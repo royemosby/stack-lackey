@@ -5,7 +5,7 @@ import styles from './App.module.css';
 import Connect from './features/Connect/Connect';
 import Keeper from './features/Keeper';
 import Member from './features/Member';
-import { store, setStatusCallback } from './services/sync/store';
+import { store, setStatusCallback, disconnect } from './services/sync/store';
 
 type ClientType = 'connect' | 'member' | 'keeper';
 
@@ -43,9 +43,18 @@ function App() {
           <img src={logo} alt="logo" />
           <h1>Stack Lackey</h1>
           {connectionStatus ? (
-            <span className={styles.connected}>Connected</span>
+            <button
+              onClick={disconnect}
+              type="button"
+              className={styles.connected}
+              title="disconnect"
+            >
+              Connected
+            </button>
           ) : (
-            <span className={styles.disconnected}>Disconnected</span>
+            <button disabled type="button" className={styles.disconnected}>
+              Disconnected
+            </button>
           )}
         </div>
       </header>
